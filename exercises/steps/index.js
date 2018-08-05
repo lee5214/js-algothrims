@@ -17,6 +17,25 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+/*function steps(n) {
+  for (let i=1;i<=n;i++){
+    let str = '#'.repeat(i).padEnd(n,' ');
+    // or use
+    //let str = '#'.repeat(i) + ' '.repeat(n-i)
+    console.log(str)
+  }
+}*/
+
+// tail recursion
+function steps(n, line = 0, str = "") {
+  if (line === n) {
+    return;
+  }
+  if (str.length === n) {
+    console.log(str);
+    return steps(n, line + 1);
+  }
+  steps(n, line, str + (str.length <= line ? "#" : " "));
+}
 
 module.exports = steps;

@@ -8,6 +8,63 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {}
+// iteration
+/*function fib(n) {
+  let point1 = 0;
+  let point2 = 1;
+  for (let i = 2; i < n; i++) {
+    let temp = point2;
+    point2 += point1;
+    point1 = temp;
+  }
+  return point1 + point2;
+}*/
+
+// recursion ==> O(2^n) bad!
+/*function fib(n) {
+  if (n > 1) {
+    return fib(n - 1) + fib(n - 2);
+  } else {
+    return n;
+  }
+}*/
+
+//tail recursion
+/*function fib(n) {
+  let rec = (n, prev = 0, next = 1) => {
+    if (n === 0) {
+      return prev;
+    }
+    if (n === 1) {
+      return next;
+    }
+    return rec(n - 1, next, prev + next);
+  };
+  return rec(n);
+}*/
+
+//IMPORTANT memoization!
+// slowFib is above 2^n solution
+// notice that in slobwFib, it returns fib(...) not slowFib(...)
+function slowFib(n) {
+  if (n > 1) {
+    return fib(n - 1) + fib(n - 2);
+  } else {
+    return n;
+  }
+}
+function memoize(fn) {
+  const cache = {};
+  return (...args) => {
+    if (cache[args]) {
+      return cache[args];
+    }
+    const result = fn.apply(this, args);
+    cache[args] = result;
+    return result;
+  };
+}
+
+const fib = memoize(slowFib);
 
 module.exports = fib;

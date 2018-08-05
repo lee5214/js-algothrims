@@ -29,7 +29,7 @@ describe('Node', () => {
   });
 });
 
-describe.skip('Tree', () => {
+describe('Tree', () => {
   test('starts empty', () => {
     const t = new Tree();
     expect(t.root).toEqual(null);
@@ -42,12 +42,15 @@ describe.skip('Tree', () => {
     t.root.add('b');
     t.root.add('c');
     t.root.children[0].add('d');
+    t.root.children[1].add('e');
+    t.root.children[1].add('f');
+    t.root.children[0].children[0].add('g');
 
     t.traverseBF(node => {
       letters.push(node.data);
     });
 
-    expect(letters).toEqual(['a', 'b', 'c', 'd']);
+    expect(letters).toEqual(['a', 'b', 'c','d','e','f', 'g']);
   });
 
   test('Can traverse DF', () => {

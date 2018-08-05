@@ -11,6 +11,46 @@
 // class.  Contains should accept a 'data' argument
 // and return the Node in the tree with the same value.
 
-class Node {}
+class Node {
+  constructor(data, left = null, right = null) {
+    this.data = data;
+    this.left = left;
+    this.right = right;
+  }
+
+  insert(data) {
+    if (data < this.data && this.left) {
+      //IMPORTANT recursion solution
+      this.left.insert(data);
+      return;
+    }
+    if (data > this.data && this.right) {
+      this.right.insert(data);
+      return;
+    }
+    if (data < this.data && !this.left) {
+      this.left = new Node(data);
+      return;
+    }
+    if (data > this.data && !this.right) {
+      this.right = new Node(data);
+      return;
+    }
+  }
+
+  contains(data) {
+    if (data === this.data) {
+      //IMPORTANT reference!
+      return this;
+    }
+    if (data < this.data && this.left) {
+      return this.left.contains(data);
+    }
+    if (data > this.data && this.right) {
+      return this.right.contains(data);
+    }
+    return null;
+  }
+}
 
 module.exports = Node;
