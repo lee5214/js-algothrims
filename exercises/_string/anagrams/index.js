@@ -25,12 +25,11 @@ function buildObj(string) {
   }
   return obj
 }*/
-
 function anagrams(stringA,stringB){
-  console.log(clearnString(stringA))
-  return clearnString(stringA) === clearnString(stringB)
+  console.log(clearString(stringA))
+  return clearString(stringA) === clearString(stringB)
 }
-function clearnString(string){
+function clearString(string){
   return string.replace(/[^\w]/g,'').toLowerCase().split('').sort().join('')
 }
 
