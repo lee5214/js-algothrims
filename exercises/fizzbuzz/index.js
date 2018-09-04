@@ -11,9 +11,6 @@
 //   fizz
 //   4
 //   buzz
-
-
-
 function fizzBuzz(n) {
   for(let i=1;i<=n;i++){
     if(i%15===0){console.log('fizzbuzz')}
