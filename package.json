@@ -1,0 +1,1 @@
+{  "name": "appbox",  "version": "1.0.0",  "description": "",  "main": "",  "author": "Cong Li",  "license": "ISC",  "repository": "github:lee5214/appbox",  "engines": {    "node": "10.0.0",    "npm": "5.6.0"  }}
